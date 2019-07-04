@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>网站</title>
+<link rel="stylesheet"
+	  href="${req.contextPath}/static/css/bootstrap.min.css">
+<link rel="stylesheet"
+	  href="${req.contextPath}/static/css/font-awesome.min.css">
+<link rel="stylesheet" href="${req.contextPath}/static/css/style.css">
+</head>
+<body>
+	<nav class="main-navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="collapse navbar-collapse" id="main-menu">
+						<ul class="menu">
+							<#list cmsNavigations as navigation>
+							<li role="presentation" class="text-center"><a
+									href="${navigation.url}"><i class="fa"></i>
+								${navigation.name}</a></li>
+						</#list>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<section class="content-wrap">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8 main-content m-post">
+				<p id="process" style="width: 0%;"></p>
+				<article class="post">
+					<div class="post-head">
+						<h1 id="${cmsArticle.title}">${cmsArticle.title}</h1>
+						<div class="post-meta">
+							<span class="fa-wrap"><i
+								class="fa fa-clock-o"></i> <span class="date-meta">${cmsArticle.publicTime?string('yyyy-MM-dd HH:mm:ss')}</span></span>
+						</div>
+						<p class="fa fa-exclamation-triangle warning">
+							<strong>作者：admin</strong>
+						</p>
+					</div>
+					<div class="post-body post-content">
+						${cmsArticle.content}
+					</div>
+					<div class="post-footer">
+						<div>
+							转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a
+								href="${req.contextPath}/cmsarticle/${cmsArticle.id}" target="_blank">admin</a>
+						</div>
+						<div></div>
+					</div>
+				</article>
+				<div class="article-nav prev-next-wrap clearfix">
+					<a href="${req.contextPath}/cmsarticle/${last.id}"
+						class="pre-post btn btn-default" title="${last.title}"><i
+						class="fa fa-angle-left fa-fw"></i> <span class="hidden-lg">上一篇</span>
+						<span class="hidden-xs">${last.title}</span></a> <a
+						href="${req.contextPath}/cmsarticle/${next.id}"
+						class="next-post btn btn-default" title="${next.title}"><span
+						class="hidden-lg">下一篇</span> <span class="hidden-xs">${next.title}</span><i
+						class="fa fa-angle-right fa-fw"></i></a>
+				</div>
+				</main>
+				<aside id="article-toc" role="navigation" class="col-md-4" style="">
+					<div class="widget">
+						<h3 class="title">相关文章</h3>
+						<div class="toc">
+						<ol>
+							<#list cmsArticles as cmsArticle>
+							<li class="toc-item toc-level-1"><a class="toc-link"
+								href="${req.contextPath}/cmsarticle/${cmsArticle.id}"><span
+									class="toc-text">${cmsArticle.title}</span></a>
+							</li>
+							</#list>
+						</ol>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

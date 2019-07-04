@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springcloud.club.blog.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="springcloud.club.blog.domain.SysUser">
+    <!--@mbg.generated-->
+    <id column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="user_id_create" jdbcType="BIGINT" property="userIdCreate" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="sex" jdbcType="BIGINT" property="sex" />
+    <result column="birth" jdbcType="TIMESTAMP" property="birth" />
+    <result column="pic_id" jdbcType="BIGINT" property="picId" />
+    <result column="live_address" jdbcType="VARCHAR" property="liveAddress" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="isDelete" jdbcType="TINYINT" property="isdelete" />
+    <result column="accountNum" jdbcType="VARCHAR" property="accountnum" />
+    <result column="weiXinNum" jdbcType="VARCHAR" property="weixinnum" />
+    <result column="qqNum" jdbcType="VARCHAR" property="qqnum" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="lunarCalendar" jdbcType="TIMESTAMP" property="lunarcalendar" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="namePinYin" jdbcType="VARCHAR" property="namepinyin" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, username, `name`, `password`, email, mobile, `status`, user_id_create, gmt_create, 
+    gmt_modified, sex, birth, pic_id, live_address, hobby, province, city, district, 
+    isDelete, accountNum, weiXinNum, qqNum, `identity`, lunarCalendar, mark, namePinYin, 
+    pid, avatar
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sys_user
+    where user_id = #{userId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="user_id" keyProperty="userId" parameterType="springcloud.club.blog.domain.SysUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_user (username, `name`, `password`, 
+      email, mobile, `status`, 
+      user_id_create, gmt_create, gmt_modified, 
+      sex, birth, pic_id, 
+      live_address, hobby, province, 
+      city, district, isDelete, 
+      accountNum, weiXinNum, qqNum, 
+      `identity`, lunarCalendar, mark, 
+      namePinYin, pid, avatar
+      )
+    values (#{username,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{userIdCreate,jdbcType=BIGINT}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{sex,jdbcType=BIGINT}, #{birth,jdbcType=TIMESTAMP}, #{picId,jdbcType=BIGINT}, 
+      #{liveAddress,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{isdelete,jdbcType=TINYINT}, 
+      #{accountnum,jdbcType=VARCHAR}, #{weixinnum,jdbcType=VARCHAR}, #{qqnum,jdbcType=VARCHAR}, 
+      #{identity,jdbcType=VARCHAR}, #{lunarcalendar,jdbcType=TIMESTAMP}, #{mark,jdbcType=VARCHAR}, 
+      #{namepinyin,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, #{avatar,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="user_id" keyProperty="userId" parameterType="springcloud.club.blog.domain.SysUser" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="userIdCreate != null">
+        user_id_create,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="picId != null">
+        pic_id,
+      </if>
+      <if test="liveAddress != null">
+        live_address,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="isdelete != null">
+        isDelete,
+      </if>
+      <if test="accountnum != null">
+        accountNum,
+      </if>
+      <if test="weixinnum != null">
+        weiXinNum,
+      </if>
+      <if test="qqnum != null">
+        qqNum,
+      </if>
+      <if test="identity != null">
+        `identity`,
+      </if>
+      <if test="lunarcalendar != null">
+        lunarCalendar,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="namepinyin != null">
+        namePinYin,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="userIdCreate != null">
+        #{userIdCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIGINT},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="picId != null">
+        #{picId,jdbcType=BIGINT},
+      </if>
+      <if test="liveAddress != null">
+        #{liveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=TINYINT},
+      </if>
+      <if test="accountnum != null">
+        #{accountnum,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinnum != null">
+        #{weixinnum,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnum != null">
+        #{qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="lunarcalendar != null">
+        #{lunarcalendar,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="namepinyin != null">
+        #{namepinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="springcloud.club.blog.domain.SysUser">
+    <!--@mbg.generated-->
+    update sys_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="userIdCreate != null">
+        user_id_create = #{userIdCreate,jdbcType=BIGINT},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIGINT},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="picId != null">
+        pic_id = #{picId,jdbcType=BIGINT},
+      </if>
+      <if test="liveAddress != null">
+        live_address = #{liveAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        isDelete = #{isdelete,jdbcType=TINYINT},
+      </if>
+      <if test="accountnum != null">
+        accountNum = #{accountnum,jdbcType=VARCHAR},
+      </if>
+      <if test="weixinnum != null">
+        weiXinNum = #{weixinnum,jdbcType=VARCHAR},
+      </if>
+      <if test="qqnum != null">
+        qqNum = #{qqnum,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        `identity` = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="lunarcalendar != null">
+        lunarCalendar = #{lunarcalendar,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="namepinyin != null">
+        namePinYin = #{namepinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springcloud.club.blog.domain.SysUser">
+    <!--@mbg.generated-->
+    update sys_user
+    set username = #{username,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      user_id_create = #{userIdCreate,jdbcType=BIGINT},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      sex = #{sex,jdbcType=BIGINT},
+      birth = #{birth,jdbcType=TIMESTAMP},
+      pic_id = #{picId,jdbcType=BIGINT},
+      live_address = #{liveAddress,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      isDelete = #{isdelete,jdbcType=TINYINT},
+      accountNum = #{accountnum,jdbcType=VARCHAR},
+      weiXinNum = #{weixinnum,jdbcType=VARCHAR},
+      qqNum = #{qqnum,jdbcType=VARCHAR},
+      `identity` = #{identity,jdbcType=VARCHAR},
+      lunarCalendar = #{lunarcalendar,jdbcType=TIMESTAMP},
+      mark = #{mark,jdbcType=VARCHAR},
+      namePinYin = #{namepinyin,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER},
+      avatar = #{avatar,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectUserLogin" parameterType="springcloud.club.blog.po.SysUserPO" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" />
+        from sys_user where username = #{username,jdbcType=VARCHAR} and `password` = #{password,jdbcType=VARCHAR}
+  </select>
+</mapper>

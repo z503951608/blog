@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springcloud.club.blog.dao.CmsClassifyMapper">
+  <resultMap id="BaseResultMap" type="springcloud.club.blog.domain.CmsClassify">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="is_order" jdbcType="INTEGER" property="isOrder" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, parent_id, class_name, is_order
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cms_classify
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from cms_classify
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="springcloud.club.blog.domain.CmsClassify" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_classify (parent_id, class_name, is_order
+      )
+    values (#{parentId,jdbcType=INTEGER}, #{className,jdbcType=VARCHAR}, #{isOrder,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="springcloud.club.blog.domain.CmsClassify" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_classify
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="className != null">
+        class_name,
+      </if>
+      <if test="isOrder != null">
+        is_order,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="isOrder != null">
+        #{isOrder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="springcloud.club.blog.domain.CmsClassify">
+    <!--@mbg.generated-->
+    update cms_classify
+    <set>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="className != null">
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="isOrder != null">
+        is_order = #{isOrder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springcloud.club.blog.domain.CmsClassify">
+    <!--@mbg.generated-->
+    update cms_classify
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      class_name = #{className,jdbcType=VARCHAR},
+      is_order = #{isOrder,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

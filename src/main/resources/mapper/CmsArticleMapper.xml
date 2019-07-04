@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springcloud.club.blog.dao.CmsArticleMapper">
+  <resultMap id="BaseResultMap" type="springcloud.club.blog.domain.CmsArticle">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="public_time" jdbcType="TIMESTAMP" property="publicTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="navigation_id" jdbcType="INTEGER" property="navigationId" />
+    <result column="is_show" jdbcType="INTEGER" property="isShow" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="views" jdbcType="INTEGER" property="views" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, title, public_time, content, navigation_id, is_show, image, views
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cms_article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from cms_article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="springcloud.club.blog.domain.CmsArticle" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_article (title, public_time, content, 
+      navigation_id, is_show, image, 
+      views)
+    values (#{title,jdbcType=VARCHAR}, #{publicTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR}, 
+      #{navigationId,jdbcType=INTEGER}, #{isShow,jdbcType=INTEGER}, #{image,jdbcType=VARCHAR}, 
+      #{views,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="springcloud.club.blog.domain.CmsArticle" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cms_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="publicTime != null">
+        public_time,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="navigationId != null">
+        navigation_id,
+      </if>
+      <if test="isShow != null">
+        is_show,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="views != null">
+        views,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publicTime != null">
+        #{publicTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="navigationId != null">
+        #{navigationId,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        #{isShow,jdbcType=INTEGER},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="views != null">
+        #{views,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="springcloud.club.blog.domain.CmsArticle">
+    <!--@mbg.generated-->
+    update cms_article
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="publicTime != null">
+        public_time = #{publicTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="navigationId != null">
+        navigation_id = #{navigationId,jdbcType=INTEGER},
+      </if>
+      <if test="isShow != null">
+        is_show = #{isShow,jdbcType=INTEGER},
+      </if>
+      <if test="image != null and image != ''">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="views != null">
+        views = #{views,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="springcloud.club.blog.domain.CmsArticle">
+    <!--@mbg.generated-->
+    update cms_article
+    set title = #{title,jdbcType=VARCHAR},
+      public_time = #{publicTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR},
+      navigation_id = #{navigationId,jdbcType=INTEGER},
+      is_show = #{isShow,jdbcType=INTEGER},
+      image = #{image,jdbcType=VARCHAR},
+      views = #{views,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="list" parameterType="map" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List" />
+      from cms_article
+    <where>
+      <if test="id != null">
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="title != null">
+        and title = #{title,jdbcType=VARCHAR}
+      </if>
+      <if test="publicTime != null">
+        and public_time = #{publicTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="content != null">
+        and content = #{content,jdbcType=LONGVARCHAR}
+      </if>
+      <if test="navigationId != null">
+        and navigation_id = #{navigationId,jdbcType=INTEGER}
+      </if>
+      <if test="isShow != null">
+        and is_show = #{isShow,jdbcType=INTEGER}
+      </if>
+      <if test="image != null">
+        and image = #{image,jdbcType=VARCHAR}
+      </if>
+      <if test="views != null">
+        and views = #{views,jdbcType=INTEGER}
+      </if>
+      <if test="startTime != null and endTime != null">
+        and public_time between #{startTime} and #{endTime}
+      </if>
+      <if test="key != null and key != ''">
+        and title like concat('%',#{key},'%')
+      </if>
+    </where>
+    <if test="offset != null and limit != null">
+        limit #{offset},#{limit}
+    </if>
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2019-07-01-->
+  <select id="count" resultType="java.lang.Integer">
+    select count(1)
+    from cms_article
+    <where>
+    <if test="id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="title != null">
+      and title = #{title,jdbcType=VARCHAR}
+    </if>
+    <if test="publicTime != null">
+      and public_time = #{publicTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="content != null">
+      and content = #{content,jdbcType=LONGVARCHAR}
+    </if>
+    <if test="navigationId != null">
+      and navigation_id = #{navigationId,jdbcType=INTEGER}
+    </if>
+    <if test="isShow != null">
+      and is_show = #{isShow,jdbcType=INTEGER}
+    </if>
+    <if test="image != null">
+      and image = #{image,jdbcType=VARCHAR}
+    </if>
+    <if test="views != null">
+      and views = #{views,jdbcType=INTEGER}
+    </if>
+    <if test="startTime != null and endTime != null">
+      and public_time between #{startTime} and #{endTime}
+    </if>
+    <if test="key != null and key != ''">
+      and title like concat('%',#{key},'%')
+    </if>
+  </where>
+  </select>
+
+
+
+  <select id="selectPiece" parameterType="map" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from cms_article
+    <where>
+      <if test="navigationId != null">
+        and navigation_id = #{navigationId,jdbcType=INTEGER}
+      </if>
+      <choose>
+        <when test="flag == 'last'">
+          and id = (
+          select max(id) from cms_article where id <![CDATA[ < ]]> #{id} and navigation_id = #{navigationId,jdbcType=INTEGER})
+        </when>
+        <otherwise>
+          and id <![CDATA[ > ]]> #{id} limit 1
+        </otherwise>
+      </choose>
+    </where>
+  </select>
+</mapper>

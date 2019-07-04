@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title>网站</title>
+<link rel="stylesheet"
+	href="${req.contextPath}/static/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${req.contextPath}/static/css/font-awesome.min.css">
+<link rel="stylesheet" href="${req.contextPath}/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="${req.contextPath}/static/admin/layui/css/layui.css" />
+
+</head>
+<body>
+	<nav class="main-navigation">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="collapse navbar-collapse" id="main-menu">
+						<ul class="menu">
+							<#list cmsNavigations as navigation>
+							<li role="presentation" class="text-center"><a
+								href="${navigation.url}"><i class="fa"></i>
+									${navigation.name}</a></li>
+							</#list>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<section class="content-wrap">
+		<div class="container">
+			<div class="row">
+				<main class="col-md-8 main-content">
+				<div id = "article">
+				 <#list cmsArticles as article>
+				<article class="post">
+					<!-- 缩略图开始 -->
+					<div class="post-media">
+						<a href="${req.contextPath}/cmsarticle/${article.id}"><img class="img-ajax"
+							src="${article.image}" alt="${article.title}" style="display: block;"></a>
+					</div>
+					<!-- 缩略图结束 -->
+					<!-- 列表内容开始 -->
+					<div class="post-content">
+						<div class="post-head home-post-head">
+							<h1 class="post-title">
+								<a href="${req.contextPath}/cmsarticle/${article.id}">${article.title}</a>
+							</h1>
+							<div class="post-meta">
+								•
+								<time class="post-date" datetime="${article.publicTime?string('yyyy-MM-dd HH:mm:ss')}"
+									title="${article.publicTime?string('yyyy-MM-dd HH:mm:ss')}">${article.publicTime?string('yyyy-MM-dd HH:mm:ss')}</time>
+							</div>
+						</div>
+						<p class="brief">
+							<#if article.content?length gt 100>
+								${article.content?substring(0,100)}...
+							<#else> 
+								${article.content} 
+							</#if>
+						</p>
+					</div>
+					<!-- 列表内容结束 -->
+					<!-- 分类、阅读开始 -->
+					<footer class="post-footer clearfix">
+						<div class="post-permalink">
+							<a href="${req.contextPath}/cmsarticle/${article.id}"
+								class="btn btn-default" style="margin-left: 40%;">阅读全文</a>
+						</div>
+					</footer>
+					<!-- 分类、阅读结束 -->
+				</article>
+				</#list>
+				</div>
+				<div style="text-align:center">
+				<div id="page" style="margin:0 auto"></div></div>
+				</main>
+				<aside class="col-md-4 sidebar">
+					<div class="widget">
+						<h3 class="title">搜索</h3>
+						<div id="search-form">
+							<div id="result-mask" class="hide"
+								style="width: 1366px; height: 630px;"></div>
+							<div class="search-area">
+								<input id="search-key" type="search" autocomplete="off"
+									placeholder="请输入关键字">
+								<button type="button" class="search-form-submit"
+									id="search-local">搜索文章</button>
+							</div>
+							<div id="result-wrap" class="hide">
+								<div id="search-result"></div>
+							</div>
+							<div class="hide">
+								<template id="search-tpl"></template>
+							</div>
+						</div>
+					</div>
+					<style>
+.widget_stick {
+	margin-bottom: 10px
+}
+
+.widget_stick .stick {
+	display: block;
+	padding: 0 15px 15px;
+	border: 1px solid #eaeaea;
+	background-color: #fff;
+	font-size: 12px;
+	border-radius: 4px
+}
+
+.widget_stick .stick h2 {
+	font-size: 20px;
+	font-weight: 400;
+	margin-top: 14px;
+	color: #ff787e
+}
+
+.widget_stick .stick p {
+	color: #5f6367;
+	margin-bottom: 0
+}
+
+.widget_stick .stick p a {
+	display: block;
+	font-size: 13px;
+	color: #00c1de
+}
+
+.widget_stick .stick strong {
+	margin: -1px 0 0 0;
+	display: inline-block;
+	padding: 4px 15px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 400;
+	background-color: #ff787e
+}
+
+.widget_stick .stick a img {
+	width: 100%;
+	max-width: 100%
+}
+
+.widget_stick .stick h3 {
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: 600
+}
+</style>
+				</aside>
+			</div>
+		</div>
+	</section>
+	<script src="${req.contextPath}/static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+        layui.use(['layer','laypage'],function () {
+            $ = layui.jquery
+        	,laypage = layui.laypage
+				laypage.render({
+					elem: 'page'
+					,count: ${count}
+					,jump: function(obj,first){
+                    	<#if navigation??>
+                        	obj.navigationId = ${navigation?js_string};
+						</#if>
+                        <#if key??>
+                        	obj.key = '${key?js_string}';
+                    	</#if>
+                        if(!first){
+                            $.ajax({
+                                url:'/list',
+                                contentType:'application/json',
+                                type:'post',
+                                data:JSON.stringify(obj),
+                                dataType:'json',
+                                success:function (data) {
+                                    if(data.code == 500){
+                                        layer.msg(data.msg);
+                                    }else if(data.code == 200){
+                                        if(data.rows.length > 0){
+                                            $("#article").html("");
+                                            setContentList(data);
+
+										}
+                                    }
+                                },
+                                error:function (data) {
+                                    layer.msg("服务异常");
+                                }
+
+                            });
+                        }
+					}
+				});
+            function setContentList(data) {
+					for (var i=0;i<data.rows.length;i++){
+                    var strVar="";
+                    strVar += "				<article class=\"post\">";
+                    strVar += "					<div class=\"post-media\">";
+                    strVar += "						<a href=\"/cmsarticle/"+data.rows[i].id+"\"><img class=\"img-ajax\"";
+                    strVar += "							src=\""+data.rows[i].image+"\" alt=\""+data.rows[i].title+"\" style=\"display: block;\"><\/a>";
+                    strVar += "					<\/div>";
+                    strVar += "					<div class=\"post-content\">";
+                    strVar += "						<div class=\"post-head home-post-head\">";
+                    strVar += "							<h1 class=\"post-title\">";
+                    strVar += "								<a href=\"/cmsarticle/"+data.rows[i].id+"\">"+data.rows[i].title+"<\/a>";
+                    strVar += "							<\/h1>";
+                    strVar += "							<div class=\"post-meta\">";
+                    strVar += "								•";
+                    strVar += "								<time class=\"post-date\" datetime=\""+data.rows[i].publicTime+"\"";
+                    strVar += "									title=\""+data.rows[i].publicTime+"\">"+data.rows[i].publicTime+"<\/time>";
+                    strVar += "							<\/div>";
+                    strVar += "						<\/div>";
+                    strVar += "						<p class=\"brief\">";
+                    strVar += "						<\/p>";
+                    strVar += "					<\/div>";
+                    strVar += "					<footer class=\"post-footer clearfix\">";
+                    strVar += "						<div class=\"post-permalink\">";
+                    strVar += "							<a href=\"/cmsarticle/"+data.rows[i].id+"\"";
+                    strVar += "								class=\"btn btn-default\" style=\"margin-left: 40%;\">阅读全文<\/a>";
+                    strVar += "						<\/div>";
+                    strVar += "					<\/footer>";
+                    strVar += "				<\/article>";
+                    $("#article").append(strVar);
+					}
+            }
+
+
+            //检索
+
+			$("#search-local").click(function () {
+				window.location.href = '${req.contextPath}/search?key=' + $("#search-key").val();
+            });
+        });
+	</script>
+
+</body>
+</html>

@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface CmsNavigationMapper {
+public interface CmsNavigationMapper extends BaseMapper<CmsNavigation>{
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsNavigation record);
 
     int insertSelective(CmsNavigation record);
 

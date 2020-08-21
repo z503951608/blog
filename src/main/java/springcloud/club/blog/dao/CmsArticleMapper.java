@@ -9,10 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface CmsArticleMapper {
+public interface CmsArticleMapper extends BaseMapper<CmsArticle>{
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsArticle record);
 
     int insertSelective(CmsArticle record);
 

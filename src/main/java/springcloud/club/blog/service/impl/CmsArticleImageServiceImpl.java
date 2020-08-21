@@ -6,7 +6,7 @@ import springcloud.club.blog.dao.CmsArticleImageMapper;
 import springcloud.club.blog.domain.CmsArticleImage;
 import springcloud.club.blog.service.CmsArticleImageService;
 @Service
-public class CmsArticleImageServiceImpl implements CmsArticleImageService{
+public class CmsArticleImageServiceImpl extends BaseServiceImpl<CmsArticleImageMapper,CmsArticleImage> implements CmsArticleImageService{
 
     @Resource
     private CmsArticleImageMapper cmsArticleImageMapper;
@@ -14,11 +14,6 @@ public class CmsArticleImageServiceImpl implements CmsArticleImageService{
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return cmsArticleImageMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int insert(CmsArticleImage record) {
-        return cmsArticleImageMapper.insert(record);
     }
 
     @Override

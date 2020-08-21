@@ -3,9 +3,10 @@ package springcloud.club.blog.domain;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import springcloud.club.blog.snowflake.entity.BaseEntity;
 
 @Data
-public class SysUser implements Serializable {
+public class SysUser extends BaseEntity<SysUser> implements Serializable {
     /**
     * 
     */

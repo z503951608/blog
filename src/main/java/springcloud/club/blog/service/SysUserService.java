@@ -4,12 +4,10 @@ import springcloud.club.blog.dao.SysUserMapper;
 import springcloud.club.blog.domain.SysUser;
 import springcloud.club.blog.po.SysUserPO;
 
-public interface SysUserService{
+public interface SysUserService extends BaseService<SysUser>{
 
 
     int deleteByPrimaryKey(Long userId);
-
-    int insert(SysUser record);
 
     int insertSelective(SysUser record);
 

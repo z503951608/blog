@@ -7,12 +7,10 @@ import springcloud.club.blog.utils.Query;
 import java.util.List;
 import java.util.Map;
 
-public interface CmsArticleService{
+public interface CmsArticleService extends BaseService<CmsArticle>{
 
 
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsArticle record);
 
     int insertSelective(CmsArticle record);
 

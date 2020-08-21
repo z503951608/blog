@@ -14,7 +14,6 @@ public class BlogWebMvcConfigurer implements WebMvcConfigurer {
             "/admin/login",
             "/static/**",//排除静态文件被拦截
     };
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthorizationInterceptor()).addPathPatterns("/admin/**").excludePathPatterns(excludes);

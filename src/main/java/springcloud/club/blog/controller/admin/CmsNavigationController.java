@@ -103,7 +103,7 @@ public class CmsNavigationController {
         }
         try {
             if(cmsNavigation.getId() == null){
-                if(cmsNavigationService.insert(cmsNavigation) >0){
+                if(cmsNavigationService.save(cmsNavigation) >0){
                     return HttpResponseDto.success("添加成功");
                 }
             }else{

@@ -10,7 +10,7 @@ import springcloud.club.blog.po.SysUserPO;
 import springcloud.club.blog.service.SysUserService;
 @Service
 @Transactional
-public class SysUserServiceImpl implements SysUserService{
+public class SysUserServiceImpl extends BaseServiceImpl<SysUserMapper,SysUser> implements SysUserService{
 
     @Resource
     private SysUserMapper sysUserMapper;
@@ -18,11 +18,6 @@ public class SysUserServiceImpl implements SysUserService{
     @Override
     public int deleteByPrimaryKey(Long userId) {
         return sysUserMapper.deleteByPrimaryKey(userId);
-    }
-
-    @Override
-    public int insert(SysUser record) {
-        return sysUserMapper.insert(record);
     }
 
     @Override

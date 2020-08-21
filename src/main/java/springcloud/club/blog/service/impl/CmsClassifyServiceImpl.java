@@ -6,7 +6,7 @@ import springcloud.club.blog.domain.CmsClassify;
 import springcloud.club.blog.dao.CmsClassifyMapper;
 import springcloud.club.blog.service.CmsClassifyService;
 @Service
-public class CmsClassifyServiceImpl implements CmsClassifyService{
+public class CmsClassifyServiceImpl extends BaseServiceImpl<CmsClassifyMapper,CmsClassify> implements CmsClassifyService{
 
     @Resource
     private CmsClassifyMapper cmsClassifyMapper;
@@ -14,11 +14,6 @@ public class CmsClassifyServiceImpl implements CmsClassifyService{
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return cmsClassifyMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int insert(CmsClassify record) {
-        return cmsClassifyMapper.insert(record);
     }
 
     @Override

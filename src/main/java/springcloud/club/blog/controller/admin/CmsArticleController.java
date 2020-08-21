@@ -162,7 +162,7 @@ public class CmsArticleController {
     public HttpResponseDto add(@RequestBody CmsArticle cmsArticle){
         try {
             if(StringUtils.isEmpty(cmsArticle.getId())){
-                if(cmsArticleService.insert(cmsArticle) > 0 ){
+                if(cmsArticleService.save(cmsArticle) > 0 ){
                     return HttpResponseDto.success("添加成功");
                 }
             }else{

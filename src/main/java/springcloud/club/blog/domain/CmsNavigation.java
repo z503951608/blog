@@ -2,13 +2,10 @@ package springcloud.club.blog.domain;
 
 import java.io.Serializable;
 import lombok.Data;
+import springcloud.club.blog.snowflake.entity.BaseEntity;
 
 @Data
-public class CmsNavigation implements Serializable {
-    /**
-    * 主键ID
-    */
-    private Integer id;
+public class CmsNavigation extends BaseEntity<CmsNavigation> implements Serializable {
 
     /**
     * 名称

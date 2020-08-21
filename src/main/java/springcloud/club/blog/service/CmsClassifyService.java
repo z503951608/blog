@@ -2,12 +2,10 @@ package springcloud.club.blog.service;
 
 import springcloud.club.blog.domain.CmsClassify;
 import springcloud.club.blog.dao.CmsClassifyMapper;
-public interface CmsClassifyService{
+public interface CmsClassifyService extends BaseService<CmsClassify>{
 
 
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsClassify record);
 
     int insertSelective(CmsClassify record);
 

@@ -6,12 +6,10 @@ import springcloud.club.blog.utils.Query;
 import java.util.List;
 import java.util.Map;
 
-public interface CmsNavigationService{
+public interface CmsNavigationService extends BaseService<CmsNavigation>{
 
 
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsNavigation record);
 
     int insertSelective(CmsNavigation record);
 

@@ -5,10 +5,8 @@ import springcloud.club.blog.domain.SysUser;
 import springcloud.club.blog.po.SysUserPO;
 
 @Mapper
-public interface SysUserMapper {
+public interface SysUserMapper extends BaseMapper<SysUser>{
     int deleteByPrimaryKey(Long userId);
-
-    int insert(SysUser record);
 
     int insertSelective(SysUser record);
 

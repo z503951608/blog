@@ -6,7 +6,7 @@ import springcloud.club.blog.domain.CmsComment;
 import springcloud.club.blog.dao.CmsCommentMapper;
 import springcloud.club.blog.service.CmsCommentService;
 @Service
-public class CmsCommentServiceImpl implements CmsCommentService{
+public class CmsCommentServiceImpl extends BaseServiceImpl<CmsCommentMapper,CmsComment> implements CmsCommentService{
 
     @Resource
     private CmsCommentMapper cmsCommentMapper;
@@ -14,11 +14,6 @@ public class CmsCommentServiceImpl implements CmsCommentService{
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return cmsCommentMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int insert(CmsComment record) {
-        return cmsCommentMapper.insert(record);
     }
 
     @Override

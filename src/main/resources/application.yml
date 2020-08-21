@@ -8,7 +8,7 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.0.162:3306/blog?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://192.168.0.162:3306/blog?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
     username: root
     password: 123456
     hikari:
@@ -60,7 +60,7 @@ server:
   port: 8080
   servlet:
     session:
-      timeout: 1800m
+      timeout: 43200s
 ###mybatis配置
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -68,7 +68,7 @@ mybatis:
 
 springcloud:
   club:
-    url: http://springcloud.club/
+    url: http://sring.free.idcfengye.com/
 
 
 

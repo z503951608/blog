@@ -3,13 +3,10 @@ package springcloud.club.blog.domain;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import springcloud.club.blog.snowflake.entity.BaseEntity;
 
 @Data
-public class CmsComment implements Serializable {
-    /**
-    * 
-    */
-    private Integer id;
+public class CmsComment extends BaseEntity<CmsComment> implements Serializable {
 
     /**
     * 文章ID

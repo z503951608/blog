@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class CmsNavigationServiceImpl implements CmsNavigationService{
+public class CmsNavigationServiceImpl extends BaseServiceImpl<CmsNavigationMapper,CmsNavigation> implements CmsNavigationService{
 
     @Resource
     private CmsNavigationMapper cmsNavigationMapper;
@@ -22,11 +22,6 @@ public class CmsNavigationServiceImpl implements CmsNavigationService{
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return cmsNavigationMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int insert(CmsNavigation record) {
-        return cmsNavigationMapper.insert(record);
     }
 
     @Override

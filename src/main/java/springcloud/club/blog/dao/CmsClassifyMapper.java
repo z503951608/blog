@@ -3,10 +3,8 @@ package springcloud.club.blog.dao;
 import org.apache.ibatis.annotations.Mapper;
 import springcloud.club.blog.domain.CmsClassify;
 @Mapper
-public interface CmsClassifyMapper {
+public interface CmsClassifyMapper extends BaseMapper<CmsClassify>{
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsClassify record);
 
     int insertSelective(CmsClassify record);
 

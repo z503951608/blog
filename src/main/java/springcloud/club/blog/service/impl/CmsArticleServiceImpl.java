@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class CmsArticleServiceImpl implements CmsArticleService{
+public class CmsArticleServiceImpl extends BaseServiceImpl<CmsArticleMapper,CmsArticle> implements CmsArticleService{
 
     @Resource
     private CmsArticleMapper cmsArticleMapper;
@@ -20,11 +20,6 @@ public class CmsArticleServiceImpl implements CmsArticleService{
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return cmsArticleMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int insert(CmsArticle record) {
-        return cmsArticleMapper.insert(record);
     }
 
     @Override

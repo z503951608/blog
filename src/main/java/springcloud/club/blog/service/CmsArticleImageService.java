@@ -2,12 +2,10 @@ package springcloud.club.blog.service;
 
 import springcloud.club.blog.dao.CmsArticleImageMapper;
 import springcloud.club.blog.domain.CmsArticleImage;
-public interface CmsArticleImageService{
+public interface CmsArticleImageService extends BaseService<CmsArticleImage>{
 
 
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsArticleImage record);
 
     int insertSelective(CmsArticleImage record);
 

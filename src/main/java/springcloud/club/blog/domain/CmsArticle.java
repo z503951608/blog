@@ -6,14 +6,10 @@ import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import springcloud.club.blog.snowflake.entity.BaseEntity;
 
 @Data
-public class CmsArticle implements Serializable {
-    /**
-    * 
-    */
-    private Integer id;
-
+public class CmsArticle extends BaseEntity<CmsArticle>implements Serializable {
     /**
     * 文章标题
     */

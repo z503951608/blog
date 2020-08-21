@@ -2,12 +2,10 @@ package springcloud.club.blog.service;
 
 import springcloud.club.blog.domain.CmsComment;
 import springcloud.club.blog.dao.CmsCommentMapper;
-public interface CmsCommentService{
+public interface CmsCommentService extends BaseService<CmsComment>{
 
 
     int deleteByPrimaryKey(Integer id);
-
-    int insert(CmsComment record);
 
     int insertSelective(CmsComment record);
 

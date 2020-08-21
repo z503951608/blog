@@ -3,10 +3,9 @@ package springcloud.club.blog.dao;
 import org.apache.ibatis.annotations.Mapper;
 import springcloud.club.blog.domain.CmsArticleImage;
 @Mapper
-public interface CmsArticleImageMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface CmsArticleImageMapper extends BaseMapper<CmsArticleImage>{
 
-    int insert(CmsArticleImage record);
+    int deleteByPrimaryKey(Integer id);
 
     int insertSelective(CmsArticleImage record);
 

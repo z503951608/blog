@@ -77,7 +77,6 @@ public class LoginControllerTest {
     @Test
     public void aa() {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        //String url = "http://114.67.238.159:15010/clb";
         String url = "http://192.168.1.1";
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         //设置连接超时时间

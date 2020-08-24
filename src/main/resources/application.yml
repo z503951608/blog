@@ -12,6 +12,7 @@ spring:
     username: root
     password: 123456
     hikari:
+     #连接数 = ((核心数 * 2) + 有效磁盘数)（通常不会高于2*CPU核心数）
       minimum-idle: 5
       maximum-pool-size: 20
       auto-commit: true
